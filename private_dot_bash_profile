@@ -1,0 +1,60 @@
+echo "==== Reading .bash_profile X ===="
+#
+# inspire de https://github.com/mathiasbynens/dotfiles
+#
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.bash_profile.d/{path,aliases,bash_prompt,exports,functions,osx,ruby,python}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
+
+source ~/.extra
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+    shopt -s "$option" 2> /dev/null;
+done;
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+source ~/.bash_profile.d/completion.d/bash_completion
+source ~/.bash_profile.d/completion.d/git_completion
+source ~/.bash_profile.d/completion.d/maven_completion
+
+source ~/.bashrc
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+source ~/.profile
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/Users/charbonk/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<

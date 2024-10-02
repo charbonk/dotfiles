@@ -1,0 +1,21 @@
+echo "==== Reading functions ===="
+
+
+# cd deployment
+# Usage: cdd d m staging site
+#        cdd q b prod
+function cdd() {
+    if [ $1 == "d" ]; then # Decisia
+        if [ $2 == "m" ]; then # Main
+            cd ~/git/decisia/decisia-deployment-main/deployments/deployments-main/env/$3/$4
+        elif [ $2 == "e" ]; then # Metadata-Extractor
+            cd ~/git/decisia/decisia-deployment-metadata-extractor/env/$3
+        fi
+    elif [ $1 == "q" ]; then # Qweri
+        if [ $2 == "b" ]; then # Batch
+            cd ~/git/qweri/qweri-deployment-batch/deployment-batch/env/$3
+        elif [ $2 == "m" ]; then # Main
+            cd ~/git/qweri/qweri-deployment-main/deployments/deployments-main/env/$3/$4
+        fi
+    fi
+}

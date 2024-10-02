@@ -1,0 +1,16 @@
+# .bashrc
+
+# only echo in interactive shell, else can disrupt mvn deploy
+case "$-" in
+*i*)	echo "==== Reading .bashrc ====" ;;
+*)	;;
+esac
+
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+eval "$(pyenv init -)"
+eval "$(jenv init -)"

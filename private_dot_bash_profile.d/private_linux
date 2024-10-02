@@ -1,0 +1,12 @@
+# Linux-only stuff. Abort if not linux.
+[[ "$OSTYPE" =~ ^linux-gnu ]] || return 1
+
+echo "==== Reading linux ===="
+
+
+export JAVA_HOME=/home/soft/jdk/jdk1.8.0_51/
+
+#on osx its set by brew
+export PYENV_ROOT="$HOME/.pyenv"
+
+export PATH="$PYENV_ROOT/bin:$JAVA_HOME/bin:$PATH"

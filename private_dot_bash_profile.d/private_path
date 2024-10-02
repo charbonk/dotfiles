@@ -1,0 +1,25 @@
+echo "==== Reading path ===="
+
+#export PATH=/usr/local/bin:$PATH
+
+export PATH="${PATH}:/Users/charbonk/bin"
+
+#export PATH="${PATH}:/Users/charbonk/git/tools/awstools"
+export PATH="${PATH}:/Users/charbonk/git/tools/awstools-switcher/bin"
+export PATH="${PATH}:/Users/charbonk/git/tools/mvn-release-python"
+export PATH="${PATH}:/Users/charbonk/git/services-lexum/polyglotte-tools/src/python"
+
+export PATH=/Applications/VisualVM.app/Contents/MacOS/:${PATH}
+export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
+
+#jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+
+#pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+#export PATH="${PATH}:`$(/opt/homebrew/bin/brew --prefix coreutils)/libexec/gnubin`"
+
+#ansible s'install la
+export PATH="${PATH}:/Users/charbonk/.local/bin"

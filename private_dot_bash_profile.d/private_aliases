@@ -1,0 +1,25 @@
+echo "==== Reading aliases ===="
+
+## get rid of command not found ##
+alias cd..='cd ..'
+ 
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias .6='cd ../../../../../../'
+
+alias terraform='echo NO! DANGEROUS! Use tf instead. To call terraform directly, precede the command with a backslash.'
+
+# https://blog.smittytone.net/2020/06/14/give-macos-terminal-a-better-ls/
+alias ls='gls -lhF --group-directories-first --color=auto'
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+alias visualvm='/Applications/VisualVM.app/Contents/MacOS/visualvm'
